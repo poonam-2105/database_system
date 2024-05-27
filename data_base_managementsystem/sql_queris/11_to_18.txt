@@ -1,0 +1,130 @@
+Q3.= Get First_Name from employee table using Tom name “Employee Name”
+
+ANS==
+mysql> select first_name as employee_name from employee where first_name="tom";
++---------------+
+| employee_name |
++---------------+
+| tom           |
++---------------+
+1 row in set (0.00 sec)
+
+-------------------------------------------------------------------------------------
+
+Q4=Get FIRST_NAME, Joining Date, and Salary from employee table.
+
+ANS==
+mysql> select first_name,salary ,joining_date from employee;;
++------------+---------+-----------------------+
+| first_name | salary  | joining_date          |
++------------+---------+-----------------------+
+| john       | 1000000 | 01-jan-13 12:00:00 AM |
+| michael    | 8000000 | 01-feb-13 12:00:00 AM |
+| roy        | 7000000 | 01-feb-13 12:00:00 AM |
+| tom        | 6000000 | 01-feb-13 12:00:00 AM |
+| jerry      |  650000 | 01-feb-13 12:00:00 AM |
+| philip     |  750000 | 01-jan-13 12:00:00 AM |
+| testname1  |  650000 | 01-jan-13 12:00:00 AM |
+| testname2  |  600000 | 01-feb-13 12:00:00 AM |
++------------+---------+-----------------------+
+8 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------
+
+Q5. Get all employee details from the employee table order by First_Name
+
+ANS==1
+
+mysql> select * from employee order by first_name asc;
++------------+------------+-----------+---------+-----------------------+------------+
+| employe_id | first_name | last_name | salary  | joining_date          | department |
++------------+------------+-----------+---------+-----------------------+------------+
+|          5 | jerry      | pinto     |  650000 | 01-feb-13 12:00:00 AM | insuarnce  |
+|          1 | john       | abraham   | 1000000 | 01-jan-13 12:00:00 AM | banking    |
+|          2 | michael    | clarke    | 8000000 | 01-feb-13 12:00:00 AM | insurance  |
+|          6 | philip     | mathew    |  750000 | 01-jan-13 12:00:00 AM | services   |
+|          3 | roy        | thomas    | 7000000 | 01-feb-13 12:00:00 AM | banking    |
+|          7 | testname1  | 123       |  650000 | 01-jan-13 12:00:00 AM | services   |
+|          8 | testname2  | lname%    |  600000 | 01-feb-13 12:00:00 AM | insurance  |
+|          4 | tom        | jose      | 6000000 | 01-feb-13 12:00:00 AM | insurance  |
++------------+------------+-----------+---------+-----------------------+------------+
+8 rows in set (0.00 sec)
+
+ANS==2
+
+mysql> select * from employee order by  salary desc;
++------------+------------+-----------+---------+-----------------------+------------+
+| employe_id | first_name | last_name | salary  | joining_date          | department |
++------------+------------+-----------+---------+-----------------------+------------+
+|          2 | michael    | clarke    | 8000000 | 01-feb-13 12:00:00 AM | insurance  |
+|          3 | roy        | thomas    | 7000000 | 01-feb-13 12:00:00 AM | banking    |
+|          4 | tom        | jose      | 6000000 | 01-feb-13 12:00:00 AM | insurance  |
+|          1 | john       | abraham   | 1000000 | 01-jan-13 12:00:00 AM | banking    |
+|          6 | philip     | mathew    |  750000 | 01-jan-13 12:00:00 AM | services   |
+|          5 | jerry      | pinto     |  650000 | 01-feb-13 12:00:00 AM | insuarnce  |
+|          7 | testname1  | 123       |  650000 | 01-jan-13 12:00:00 AM | services   |
+|          8 | testname2  | lname%    |  600000 | 01-feb-13 12:00:00 AM | insurance  |
++------------+------------+-----------+---------+-----------------------+------------+
+8 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------
+Q6. Get employee details from employee table whose first name contains ‘J’.
+
+ANS==
+
+mysql> select * from employee where first_name like 'j%';
++------------+------------+-----------+---------+-----------------------+------------+
+| employe_id | first_name | last_name | salary  | joining_date          | department |
++------------+------------+-----------+---------+-----------------------+------------+
+|          1 | john       | abraham   | 1000000 | 01-jan-13 12:00:00 AM | banking    |
+|          5 | jerry      | pinto     |  650000 | 01-feb-13 12:00:00 AM | insuarnce  |
++------------+------------+-----------+---------+-----------------------+------------+
+2 rows in set (0.01 sec)
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Q7. Get department wise maximum salary from employee table order by
+
+ANS==
+
+mysql> select department, max(salary) as max_salary
+    -> from employee group by department;
++------------+------------+
+| department | max_salary |
++------------+------------+
+| banking    |    7000000 |
+| insurance  |    8000000 |
+| insuarnce  |     650000 |
+| services   |     750000 |
++------------+------------+
+4 rows in set (0.01 sec)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Q8. salaryascending?
+
+ANS==
+
+mysql> select salary from employee asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc' at line 1
+mysql> select * from employee order by salary asc;
++------------+------------+-----------+---------+-----------------------+------------+
+| employe_id | first_name | last_name | salary  | joining_date
+| department |
++------------+------------+-----------+---------+-----------------------+------------+
+|          8 | testname2  | lname%    |  600000 | 01-feb-13 12:00:00 AM | insurance  |
+|          5 | jerry      | pinto     |  650000 | 01-feb-13 12:00:00 AM | insuarnce  |
+|          7 | testname1  | 123       |  650000 | 01-jan-13 12:00:00 AM | services   |
+|          6 | philip     | mathew    |  750000 | 01-jan-13 12:00:00 AM | services   |
+|          1 | john       | abraham   | 1000000 | 01-jan-13 12:00:00 AM | banking    |
+|          4 | tom        | jose      | 6000000 | 01-feb-13 12:00:00 AM | insurance  |
+|          3 | roy        | thomas    | 7000000 | 01-feb-13 12:00:00 AM | banking    |
+|          2 | michael    | clarke    | 8000000 | 01-feb-13 12:00:00 AM | insurance  |
++------------+------------+-----------+---------+-----------------------+------------+
+8 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------
+
+Q9=Select first_name, incentive amount from employee and incentives
+table forthose employees who have incentives and incentive amount
+greater than3000
+
+ANS==

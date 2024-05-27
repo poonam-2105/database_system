@@ -1,0 +1,131 @@
+1. What do you understand ByDatabase
+
+ANSS==
+
+Database: A database is an organized collection 
+of structured information or data, typically stored
+and accessed electronically from a computer system.
+It can be as simple as a text file with a list of names
+or as complex as a multi-terabyte system storing vast 
+amounts of interconnected data.
+
+2. What is Normalization?
+
+ANS==
+
+Normalization: Normalization is the process of organizing the columns (attributes) and 
+tables (relations) of a relational database to 
+minimize data redundancy and dependency. The main goal is to 
+ensure that each table represents a single subject
+ and that each piece of data is stored in only one place.
+
+3. What is Difference between DBMS and RDBMS?
+
+ANSS==
+
+ Difference between DBMS and RDBMS:
+DBMS (Database Management System): 
+It is a software system that allows users to 
+define, create, maintain, and control access to
+ databases. Examples include MySQL, Microsoft Access, 
+ and MongoDB. DBMS doesn't necessarily enforce relationships or constraints between tables.
+RDBMS (Relational Database Management System):
+ It is a type of DBMS that organizes data into tables with rows 
+ and columns, where relationships between the tables are established
+  using keys. RDBMS systems enforce the relational model and provide 
+  features like referential integrity and ACID
+ (Atomicity, Consistency, Isolation, Durability) transactions.
+
+4. What is MF Cod Rule of RDBMS Systems?
+
+ANSS==
+
+ ACID Rule of RDBMS Systems: ACID stands for Atomicity, Consistency,
+  Isolation, Durability. It's a set of properties that guarantee 
+  the reliability of database transactions. Each letter corresponds to a particular property:
+Atomicity: All operations in a transaction must be completed
+ successfully, or none should be applied at all.
+Consistency: A transaction should bring the database from one 
+valid state to another. All data should be in a consistent state
+ before and after the transaction.
+Isolation: Concurrent execution of transactions should result
+ in a system state that would be obtained if transactions were executed serially.
+Durability: Once a transaction is committed, changes made by it
+ should be permanent and survive system failures.
+
+5. What do you understand ByData Redundancy?
+
+ANSS==
+
+ Data Redundancy: Data redundancy refers to the 
+ duplication of data within a database or between databases.
+  It occurs when the same piece of data is stored in multiple 
+  places unnecessarily. It can lead to inconsistencies and waste storage space.
+
+6. What is DDL Interpreter?
+
+ANSS==
+
+DDL Interpreter: DDL stands for Data Definition
+ Language. A DDL interpreter is a component of a DBMS
+  that processes DDL statements. It is responsible for creating,
+   altering, and dropping database objects such as tables, views, indexes, etc., according 
+to the commands issued by users or applications.
+
+7. What is DML Compiler in SQL?
+
+ANSS==
+
+DML Compiler in SQL: DML stands for Data Manipulation
+ Language. A DML compiler in SQL translates data manipulation
+  operations specified in SQL queries into low-level instructions 
+  that the DBMS can understand and execute. It's responsible for
+   handling tasks like inserting,
+ updating, deleting, and retrieving data.
+
+
+8. What is SQL Key Constraints writing an Example of SQL Key Constraints
+
+ANSS==
+
+ SQL Key Constraints: SQL key constraints are rules that
+ enforce data integrity within a database table. Examples include:
+Primary Key Constraint: Ensures that each row in a table 
+is uniquely identified. Example: CREATE TABLE Employees
+(EmployeeID INT PRIMARY KEY, Name VARCHAR(50));
+Foreign Key Constraint: Enforces referential integrity
+ by ensuring that values in a column match values in another table's primary key. Example: CREATE TABLE Orders (OrderID INT PRIMARY KEY, CustomerID INT,
+ FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID));
+
+9. What is save Point? How to create a save Point write a
+Query?
+
+ANSS==
+
+Save Point: A savepoint is a point within a
+ transaction where you can roll back to if necessary. 
+ It allows you to mark a point in a transaction to which 
+ you can later roll back without rolling back the entire transaction. 
+ To create a savepoint
+ in SQL, you can use the SAVEPOINT statement:
+
+
+10.What is trigger and how to create a Trigger in SQL?
+
+
+ANSS==
+
+ Trigger in SQL: A trigger is a database object 
+ that automatically executes in response to certain
+  events on a particular table or view. Triggers are
+   commonly used to enforce business rules, perform data validation,
+    or maintain derived values.
+  Here's an example of creating a trigger in SQL:
+
+  REATE TRIGGER audit_trigger
+AFTER INSERT ON Employees
+FOR EACH ROW
+BEGIN
+    INSERT INTO AuditLog (Action, TableName, DateTime)
+    VALUES ('INSERT', 'Employees', NOW());
+END;
